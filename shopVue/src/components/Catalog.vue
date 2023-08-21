@@ -8,9 +8,11 @@
       @click="goToItemPage(product.id)"
     >
       <img :src="product.thumbnail" alt="" />
-      <h2>Brand:{{ product.brand }}</h2>
-      <p>Description:{{ product.description }}</p>
-      <p>Price:{{ product.price }}</p>
+      <div class="product-details">
+        <h2>Brand:{{ product.brand }}</h2>
+        <p>Description:{{ product.description }}</p>
+        <p>Price:{{ product.price }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -23,14 +25,14 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { onMounted } from 'vue'
-
 import { productsStore } from '@/stores/products'
 import { useRouter } from 'vue-router'
-const router = useRouter()
-const store = productsStore()
+
 onMounted(() => {
   store.fetchProductsFromDB()
 })
+const store = productsStore()
+const router = useRouter()
 const goToItemPage = (id: number) => {
   router.push({ name: 'ProductView', params: { id: id } })
 }
@@ -48,6 +50,9 @@ const goToItemPage = (id: number) => {
   box-shadow: 0 0 14px 1px black;
   & img {
     width: 70%;
+  }
+  & button {
+    margin-bottom: 15px;
   }
 }
 </style>
