@@ -7,21 +7,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <button @click="backToCatalog">Back to catalog</button>
-  <div v-if="store.cart.length === 0">
-    <h1>Cart is Empty</h1>
-  </div>
-  <div v-else>
-    <div v-for="cartItem in store.cart" :key="cartItem.id">
-      <div class="item-details">
-        <img :src="cartItem.thumbnail" alt="" />
-        <h2>Brand:{{ cartItem.brand }}</h2>
-        <p>Description:{{ cartItem.description }}</p>
-        <p>Price:{{ cartItem.price }}</p>
-        <button @click="removeFromCart(cartItem.id)">Remove</button>
-      </div>
-    </div>
-  </div>
+  <v-btn @click="backToCatalog" class="bg-blue-accent-4 mb-10"> Back to catalog </v-btn>
+  <h1 v-if="store.cart.length === 0">Cart is Empty</h1>
+  <v-row class="item-details" v-else v-for="cartItem in store.cart" :key="cartItem.id">
+    <img :src="cartItem.thumbnail" alt="" />
+    <h2 class="font-weight-regular">Brand:{{ cartItem.brand }}</h2>
+    <p class="">Price:{{ cartItem.price }}</p>
+    <v-btn @click="removeFromCart(cartItem.id)" class="bg-red-accent-2 mb-0">Remove</v-btn>
+  </v-row>
 </template>
 <script setup lang="ts">
 import router from '@/router'
@@ -39,7 +32,6 @@ const removeFromCart = (id: number) => {
 
 <style scoped>
 .item-details {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
@@ -48,6 +40,9 @@ const removeFromCart = (id: number) => {
   box-shadow: 0 0 17px 6px #e7e7e7;
   & img {
     width: 20%;
+  }
+  & p {
+    font-size: 24px;
   }
 }
 </style>

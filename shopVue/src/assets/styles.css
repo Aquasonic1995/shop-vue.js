@@ -2,8 +2,11 @@
     margin: 0;
     padding: 0;
 }
+body{
 
+}
 main {
+
     max-width: 900px;
     margin: 0 auto;
     padding: 16px;

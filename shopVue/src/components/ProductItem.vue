@@ -6,18 +6,16 @@ export default defineComponent({
 })
 </script>
 <template>
-  <div class="product">
-    <button @click="router.push({ name: 'Catalog' })">Back to catalog</button>
-    <div class="product-image">
-      <img :src="product.thumbnail" alt="" />
-    </div>
-    <div class="product-details">
-      <p>Brand:{{ product.brand }}</p>
-      <p>Description:{{ product.description }}</p>
-      <p>Price:{{ product.price }}</p>
-    </div>
-    <button @click="addToCart">Add to cart</button>
-  </div>
+  <v-btn class="ml-5 bg-blue-accent-4" @click="router.push({ name: 'Catalog' })"
+    >Back to catalog
+  </v-btn>
+  <v-card class="product">
+    <v-img :src="product.thumbnail" />
+    <v-card-title class="pl-0">{{ product.brand }}</v-card-title>
+    <v-card-subtitle class="pl-0">$ {{ product.price }}</v-card-subtitle>
+    <v-card-text class="pl-0">{{ product.description }}</v-card-text>
+    <v-btn variant="elevated" @click="addToCart" class="bg-purple-darken-1"> Add to Cart </v-btn>
+  </v-card>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -42,11 +40,14 @@ const addToCart = () => {
   margin: 8px;
   padding: 16px;
   box-shadow: 0 0 14px 1px black;
-  & img {
-    width: 70%;
+  & v-img {
+    height: 200px;
   }
   & button {
     margin-bottom: 15px;
   }
+}
+v-img {
+  height: 300px;
 }
 </style>

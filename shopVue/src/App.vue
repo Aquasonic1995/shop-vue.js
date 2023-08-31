@@ -1,8 +1,15 @@
 <template>
   <header>
-    <div class="cart-items" @click="router.push({ name: 'Cart' })">
+    <v-row class="cart-items justify-end mt-5 mr-10">
+      <v-btn
+        v-if="router.currentRoute.value.name !== 'Cart'"
+        @click="router.push({ name: 'Cart' })"
+        class="ml-5 mr-5 bg-blue-accent-4"
+      >
+        Go to Cart
+      </v-btn>
       <p>Items in cart: {{ store.cart.length }}</p>
-    </div>
+    </v-row>
   </header>
   <main>
     <RouterView />

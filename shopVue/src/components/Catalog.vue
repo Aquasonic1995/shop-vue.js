@@ -1,19 +1,18 @@
 <template>
   <h1>Catalog</h1>
   <div class="product-list">
-    <div
-      class="product"
-      v-for="product in store.products"
-      :key="product.id"
-      @click="goToItemPage(product.id)"
-    >
-      <img :src="product.thumbnail" alt="" />
-      <div class="product-details">
-        <h2>Brand:{{ product.brand }}</h2>
-        <p>Description:{{ product.description }}</p>
-        <p>Price:{{ product.price }}</p>
-      </div>
-    </div>
+    <v-row>
+      <v-col v-for="product in store.products" :key="product.id" cols="12" sm="4">
+        <v-card class="product">
+          <v-card-title>{{ product.brand }}</v-card-title>
+          <v-card-subtitle>$ {{ product.price }}</v-card-subtitle>
+          <v-card-text>{{ product.description }}</v-card-text>
+          <v-img :src="product.thumbnail" height="200px" />
+          <v-btn @click="goToItemPage(product.id)" class="ml-5"> See details </v-btn>
+        </v-card>
+        <v-sheet class="ma-2 pa-2"> One of three columns </v-sheet>
+      </v-col>
+    </v-row>
   </div>
 </template>
 <script lang="ts">
@@ -37,22 +36,4 @@ const goToItemPage = (id: number) => {
   router.push({ name: 'ProductView', params: { id: id } })
 }
 </script>
-<style scoped>
-.product-list {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-.product {
-  flex-basis: 28%;
-  margin: 8px;
-  padding: 16px;
-  box-shadow: 0 0 14px 1px black;
-  & img {
-    width: 70%;
-  }
-  & button {
-    margin-bottom: 15px;
-  }
-}
-</style>
+<style scoped></style>
