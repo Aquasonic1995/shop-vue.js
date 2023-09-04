@@ -12,13 +12,17 @@
     </v-row>
   </header>
   <main>
+    <TextInput placeholder="email" hint="hint" label="Enter your email" v-model="parentModel" />
     <RouterView />
   </main>
 </template>
 <script setup lang="ts">
+import TextInput from '@/components/TextInput.vue'
 import router from '@/router'
 import { productsStore } from '@/stores/products'
+import { ref } from 'vue'
 const store = productsStore()
+const parentModel = ref('testValue')
 </script>
 <style scoped>
 .cart-items {
