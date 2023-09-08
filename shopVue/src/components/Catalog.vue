@@ -6,11 +6,10 @@
         <v-card class="product">
           <v-card-title>{{ product.brand }}</v-card-title>
           <v-card-subtitle>$ {{ product.price }}</v-card-subtitle>
-          <v-card-text>{{ product.description }}</v-card-text>
+          <v-card-text class="description">{{ product.description }}</v-card-text>
           <v-img :src="product.thumbnail" height="200px" />
           <v-btn @click="goToItemPage(product.id)" class="ml-5"> See details </v-btn>
         </v-card>
-        <v-sheet class="ma-2 pa-2"> One of three columns </v-sheet>
       </v-col>
     </v-row>
   </div>
@@ -36,4 +35,8 @@ const goToItemPage = (id: number) => {
   router.push({ name: 'ProductView', params: { id: id } })
 }
 </script>
-<style scoped></style>
+<style scoped>
+.description {
+  height: 100px;
+}
+</style>

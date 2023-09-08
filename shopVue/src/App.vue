@@ -12,7 +12,13 @@
     </v-row>
   </header>
   <main>
-    <TextInput placeholder="email" hint="hint" label="Enter your email" v-model="parentModel" />
+    <TextInput
+      class="hidden"
+      placeholder="email"
+      hint="hint"
+      label="Enter your email"
+      v-model="parentModel"
+    />
     <RouterView />
   </main>
 </template>
