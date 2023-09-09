@@ -1,5 +1,6 @@
 <template>
   <header>
+    <v-btn @click="store.likes += 1">{{ store.likes }}</v-btn>
     <v-row class="cart-items justify-end mt-5 mr-10">
       <v-btn
         v-if="router.currentRoute.value.name !== 'Cart'"
@@ -23,10 +24,11 @@
   </main>
 </template>
 <script setup lang="ts">
-import TextInput from '@/components/TextInput.vue'
 import router from '@/router'
 import { productsStore } from '@/stores/products'
 import { ref } from 'vue'
+import TextInput from '@/components/TextInput.vue'
+
 const store = productsStore()
 const parentModel = ref('testValue')
 </script>

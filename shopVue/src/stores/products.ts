@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 
 export const productsStore = defineStore('products', {
-  state: (): { products: Array<any> | never[]; cart: Array<any> | never[] } => ({
+  state: (): { products: Array<any> | never[]; cart: Array<any> | never[]; likes: number } => ({
     products: [],
-    cart: []
+    cart: [],
+    likes: 0
   }),
   actions: {
     fetchProductsFromDB() {
