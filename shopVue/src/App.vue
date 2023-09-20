@@ -18,12 +18,8 @@
 <script setup lang="ts">
 import router from '@/router'
 import { productsStore } from '@/stores/products'
-import { ref } from 'vue'
-import { storeToRefs } from 'pinia'
 
 const store = productsStore()
-const { likes } = storeToRefs(store)
-const parentModel = ref('')
 </script>
 <style scoped>
 .cart-items {
