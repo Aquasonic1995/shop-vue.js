@@ -1,6 +1,5 @@
 <template>
   <header>
-    <v-btn @click="store.likes += 1">{{ store.likes }}</v-btn>
     <v-row class="cart-items justify-end mt-5 mr-10">
       <v-btn
         v-if="router.currentRoute.value.name !== 'Cart'"
@@ -13,13 +12,6 @@
     </v-row>
   </header>
   <main>
-    <TextInput
-      class="hidden"
-      placeholder="email"
-      hint="hint"
-      label="Enter your email"
-      v-model="parentModel"
-    />
     <RouterView />
   </main>
 </template>
@@ -27,10 +19,11 @@
 import router from '@/router'
 import { productsStore } from '@/stores/products'
 import { ref } from 'vue'
-import TextInput from '@/components/TextInput.vue'
+import { storeToRefs } from 'pinia'
 
 const store = productsStore()
-const parentModel = ref('testValue')
+const { likes } = storeToRefs(store)
+const parentModel = ref('')
 </script>
 <style scoped>
 .cart-items {

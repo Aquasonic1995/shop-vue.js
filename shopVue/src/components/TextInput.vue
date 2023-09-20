@@ -1,20 +1,5 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'TextInput'
-})
-</script>
-
 <template>
-  <p>{{ props.label }}</p>
-  <input
-    type="text"
-    :placeholder="props.placeholder"
-    :value="props.modelValue"
-    @input="handleInput"
-  />
-  <p>{{ props.hint }}</p>
+  <input type="text" :placeholder="placeholder" :value="modelValue" @input="handleInput" />
 </template>
 <script setup lang="ts">
 const props = defineProps({
